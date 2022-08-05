@@ -1,0 +1,17 @@
+.main-logo img{
+    height: 25px;
+    width: 25px;
+}
+
+.todos{
+    font-family: 'BhuTuka Expanded One', cursive;
+    font-weight: 600;
+    font-size: medium;
+    margin: 0 0 0 4px;
+    text-align: center;
+}
+.navbar-brand{
+    width: max-content;
+    align-items: center;
+    justify-content: center;
+}
