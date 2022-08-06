@@ -4,14 +4,23 @@
 }
 
 .todos{
-    font-family: 'BhuTuka Expanded One', cursive;
+    /* font-family: 'BhuTuka Expanded One', cursive; */
     font-weight: 600;
     font-size: medium;
-    margin: 0 0 0 4px;
+    margin: 0 0 0 9px;
     text-align: center;
+    color: #0d6efd !important;
 }
 .navbar-brand{
     width: max-content;
     align-items: center;
     justify-content: center;
+}
+
+nav{
+    background-color: #21262D;
+}
+
+body{
+    background-color: #0D1117;
 }
