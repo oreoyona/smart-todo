@@ -19,15 +19,15 @@
     </head>
 </head>
 
-<body>
-    <form class="row g-3 d-flex" method="post" action="/add">
+<body class="bg-dark">
+    <form class="row g-3 d-flex" method="post">
         <div class="col-auto">
             <label for="nom" class="visually-hidden">Email</label>
-            <input type="text" class="form-control" id="nom" value="name">
+            <input name='name' type="text" class="form-control" id="nom" value="{{ request.form['name'] }}">
         </div>
         <div class="col-auto">
             <label for="post_name" class="visually-hidden">Password</label>
-            <input type="text" class="form-control" id="post_name" value="post_name">
+            <input name="post_name" type="text" class="form-control" id="post_name" value="{{ request.form['post_name'] }}">
         </div>
         <div class="col-auto">
             <button type="submit" class="btn btn-primary mb-3">Save</button>

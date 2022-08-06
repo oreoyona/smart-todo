@@ -1,5 +1,4 @@
-
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -15,8 +14,7 @@ class Student(db.Model):
     name = db.Column(db.String(50), nullable=False)
     post_name = db.Column(db.String(50), nullable=False)
 
-    def __init__(self, id, name, post_name):
-        self.id = id
+    def __init__(self, name, post_name):
         self.name = name
         self.post_name = post_name
 
@@ -41,22 +39,29 @@ def index():
     </body>
     </html>
     """ 
-
-
+myData = []
+liste = []
+myPsql = Student.query.all()
 @server.route('/lists')
 def show_all():
-    return render_template('index.html', listItem=listItem)
+    return render_template('index.html', listItem=myPsql)
     
-liste = []
+
 
 @server.route('/add', methods=['GET', 'POST']) 
 def add_stud():
 
     if request.method == 'POST':
-        result = request.form
-        result1 = list(result)
-        liste.append(result)
-        return render_template('results.html', result1= result1)
+        name = request.form['name']
+        post_name = request.form['post_name']
+        newUser = Student(name, post_name)
+        db.session.add(newUser)
+        db.session.commit()
+        myData.append({'name': name, 'post_name': post_name})
+        
+        
+        
+        return redirect(url_for('show_all'))
 
     else:
         
