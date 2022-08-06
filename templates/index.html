@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,13 +18,15 @@
 
 <body class="bg-dark">
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
+
+        <nav class="navbar navbar-expand-lg navbar-dark text-white">
+
             <div class="container-fluid">
                 <a class="navbar-brand d-flex " href="#">
                     <i class="main-logo d-flex">
                         <img src={{url_for('static', filename='logo.svg' )}} alt="site logo">
                     </i>
-                   <section role="text" class="todos">Todos</section>
+                    <section role="text" class="todos">S/todos</section>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -63,9 +66,28 @@
                 </div>
             </div>
         </nav>
+
     </header>
 
+    <table class="table text-white">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Post_Name</th>
+            </tr>
 
+        <tbody>
+            {% for item in listItem %}
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.post_name}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </thead>
+    </table>
 
 
 

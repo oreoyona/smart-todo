@@ -1,17 +1,33 @@
-.main-logo img{
-    height: 25px;
-    width: 25px;
+.main-logo img {
+  height: 25px;
+  width: 25px;
 }
 
-.todos{
-    font-family: 'BhuTuka Expanded One', cursive;
-    font-weight: 600;
-    font-size: medium;
-    margin: 0 0 0 4px;
-    text-align: center;
+.todos {
+  font-weight: 600;
+  font-size: medium;
+  margin: 0 0 0 9px;
+  text-align: center;
+  color: #5ca5f9 !important;
 }
-.navbar-brand{
-    width: max-content;
-    align-items: center;
-    justify-content: center;
+
+.navbar-brand {
+  width: max-content;
+  align-items: center;
+  justify-content: center;
 }
+
+nav {
+  background-color: #161B22;
+}
+
+form {
+  flex-direction: column;
+}
+
+form input {
+  width: 50px;
+  padding: 5px;
+}
+
+/*# sourceMappingURL=main.css.map */
