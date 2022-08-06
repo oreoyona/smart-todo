@@ -1,5 +1,5 @@
-from distutils.debug import DEBUG
-from flask import Flask, render_template, url_for
+
+from flask import Flask, render_template, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -22,9 +22,13 @@ class Student(db.Model):
 
     def __repr__(self):
         return f"student_id: {self.id} | name: {self.name} | post_name: {self.post_name}"
+db.create_all()
+# gloire = Student(1, "Kilembi", "Chabu")
+# db.session.add(gloire)
+# db.session.commit()
 
 
-
+listItem = Student.query.all()
 
     
 @server.route('/')
@@ -37,11 +41,33 @@ def index():
     </body>
     </html>
     """ 
+
+
 @server.route('/lists')
 def show_all():
-    return render_template('index.html', tbleau=[0,1,2,3])
+    return render_template('index.html', listItem=listItem)
     
-    
+liste = []
+
+@server.route('/add', methods=['GET', 'POST']) 
+def add_stud():
+
+    if request.method == 'POST':
+        result = request.form
+        result1 = list(result)
+        liste.append(result)
+        return render_template('results.html', result1= result1)
+
+    else:
+        
+        return render_template('forms.html', liste=liste)
+
+
+
 if __name__ == '__main__':
    server.run(host="0.0.0.0")
-   server(DEBUG=True)
+   server.run(debug=True)
+
+
+
+
