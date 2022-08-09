@@ -1,11 +1,15 @@
 from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 
 server = Flask(__name__)
 server.config['SQLALCHEMY_DATABASE_URI']='postgresql://postgres:1234@localhost:5432'
 
 db = SQLAlchemy(server)
+
+
+migrate = Migrate(server, db)
 
 
 class Student(db.Model):
