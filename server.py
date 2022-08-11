@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
 
+
+
 server = Flask(__name__)
 server.config['SQLALCHEMY_DATABASE_URI']='postgresql://postgres:1234@localhost:5432'
 
@@ -17,20 +19,20 @@ class Student(db.Model):
     id = db.Column('student_id', db.Integer, primary_key = True)
     name = db.Column(db.String(50), nullable=False)
     post_name = db.Column(db.String(50), nullable=False)
-
-    def __init__(self, name, post_name):
+    graduating = db.Column(db.Boolean, nullable=False, default=False)
+    
+    
+    def __init__(self, name, post_name, graduating):
         self.name = name
         self.post_name = post_name
+        self.graduating = graduating
 
     def __repr__(self):
         return f"student_id: {self.id} | name: {self.name} | post_name: {self.post_name}"
-db.create_all()
-# gloire = Student(1, "Kilembi", "Chabu")
-# db.session.add(gloire)
-# db.session.commit()
 
 
-listItem = Student.query.all()
+
+# listItem = Student.query.all()
 
     
 @server.route('/')
@@ -58,7 +60,8 @@ def add_stud():
     if request.method == 'POST':
         name = request.form['name']
         post_name = request.form['post_name']
-        newUser = Student(name, post_name)
+        graduating = request.form.get('graduating')
+        newUser = Student(id= id, name=name, post_name=post_name, graduating=graduating)
         db.session.add(newUser)
         db.session.commit()
         myData.append({'name': name, 'post_name': post_name})
@@ -75,7 +78,7 @@ def add_stud():
 
 if __name__ == '__main__':
    server.run(host="0.0.0.0")
-   server.run(debug=True)
+   server.run(FLASK_DEBUG=True)
 
 
 

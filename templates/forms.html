@@ -22,13 +22,22 @@
 <body class="bg-dark">
     <form class="row g-3 d-flex" method="post">
         <div class="col-auto">
-            <label for="nom" class="visually-hidden">Email</label>
-            <input name='name' type="text" class="form-control" id="nom" value="{{ request.form['name'] }}">
+            <label for="nom" class="visually-hidden">Name</label>
+            <input name='name' type="text" class="form-control" id="nom" value="{{ request.form['name'] }}" placeholder="name">
         </div>
         <div class="col-auto">
-            <label for="post_name" class="visually-hidden">Password</label>
-            <input name="post_name" type="text" class="form-control" id="post_name" value="{{ request.form['post_name'] }}">
+            <label for="post_name" class="visually-hidden">Post_name</label>
+            <input name="post_name" type="text" class="form-control" id="post_name" value="{{ request.form['post_name'] }}" placeholder="post_name">
         </div>
+
+
+
+        <select class="form-select" aria-label="Is the student graduating?" name="graduating">
+            <option selected>Is the student graduating?</option>
+            <option value="True">Yes</option>
+            <option value="False">No</option>
+            
+          </select>
         <div class="col-auto">
             <button type="submit" class="btn btn-primary mb-3">Save</button>
         </div>
