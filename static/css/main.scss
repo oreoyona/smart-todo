@@ -3,7 +3,10 @@ $header-color: #161B22;
 $side-color: #0D1117;
 $accent-color: #CF649A;
 
-
+html, body, *{
+    margin: 0;
+    padding: 0;
+}
 .main-logo img{
     height: 25px;
     width: 25px;
@@ -40,3 +43,58 @@ form input, select{
    
     
 }
+
+
+
+
+
+/*
+Home page
+
+*/
+
+
+.home-body{
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    
+
+}
+.home-bubble{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.home-bubble::after{
+    position: absolute;
+    background: radial-gradient(ellipse at top , #E4520C, transparent),
+                radial-gradient(ellipse at center, transparent, brown),
+                radial-gradient(ellipse at bottom, yellow, transparent) 
+
+    ;
+    height: 25rem;
+    width: 26rem;
+    content: "";
+    border-radius: 100%;
+    border: 1px solid transparent;
+    transform: translateY(-6%);
+    filter: blur(16px);
+}
+.home-bubble::before{
+    position: absolute;
+    background: radial-gradient(blue, transparent);
+    content:'';
+    height: 25rem;
+    width: 26rem;
+    border-radius: 100%;
+    border: 1px solid transparent;
+    transform: translateY(4%);
+    filter: blur(16px);
+    
+
+}
+
+
