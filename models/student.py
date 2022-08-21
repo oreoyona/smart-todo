@@ -1,6 +1,9 @@
 from flask_sqlalchemy import SQLAlchemy
+from flask import Flask
 
 db = SQLAlchemy()
+
+
 
 class Student(db.Model):
     __tablename__ = 'allstudents'
@@ -17,4 +20,5 @@ class Student(db.Model):
 
     def __repr__(self):
         return f"student_id: {self.id} | name: {self.name} | post_name: {self.post_name}"
+
 

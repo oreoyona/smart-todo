@@ -2,13 +2,18 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, render_template, url_for, request, redirect
 from flask_migrate import Migrate
 from models.student import Student, db
+import config
+
+def create_app(env):
+    server = Flask(__name__, template_folder='templates')
+    server.config.from_object(env)
+    db.init_app(server)
+    return server
 
 
-
-server = Flask(__name__)
-db.init_app(server)
+server = create_app(config)
 server.app_context().push()
-server.config.from_object("config")
+db.create_all()
 
 
 migrate = Migrate(server, db)
