@@ -1,4 +1,6 @@
-html, body, * {
+html,
+body,
+* {
   margin: 0;
   padding: 0;
 }
@@ -38,7 +40,8 @@ form {
   padding-top: 40px;
 }
 
-form input, select {
+form input,
+select {
   width: 17rem !important;
 }
 
@@ -49,37 +52,76 @@ Home page
 .home-body {
   background-color: black;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .home-bubble {
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: bubble 5s ease-in infinite alternate backwards;
+  z-index: 1;
 }
 
 .home-bubble::after {
   position: absolute;
   background: radial-gradient(ellipse at top, #E4520C, transparent), radial-gradient(ellipse at center, transparent, brown), radial-gradient(ellipse at bottom, yellow, transparent);
-  height: 25rem;
-  width: 26rem;
+  height: 50rem;
+  width: 50rem;
   content: "";
   border-radius: 100%;
   border: 1px solid transparent;
   transform: translateY(-6%);
+  transform: translateX(2px);
   filter: blur(16px);
+  animation: bubble1 5s ease-in infinite alternate forwards;
 }
 
 .home-bubble::before {
   position: absolute;
   background: radial-gradient(blue, transparent);
   content: "";
-  height: 25rem;
-  width: 26rem;
+  height: 50rem;
+  width: 50rem;
   border-radius: 100%;
   border: 1px solid transparent;
   transform: translateY(4%);
   filter: blur(16px);
+}
+
+.home-hero {
+  display: flex;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+.home-hero h1 {
+  color: white;
+  margin: 40px;
+  border: 1px solid white;
+  padding: 15px 10px;
+}
+
+@keyframes bubble {
+  0% {
+    transform: scale(1.01);
+  }
+  100% {
+    transform: rotate(45deg);
+    transform: matrix3d(12px);
+  }
+}
+@keyframes bubble1 {
+  0% {
+    transform: translateY(3px);
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: rotate3d(50deg);
+    transform: scale(1.02);
+    transform: translateX(25px);
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
