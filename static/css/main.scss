@@ -5,6 +5,8 @@ $accent-color: #CF649A;
 
 
 
+
+
 .main-logo img {
     height: 25px;
     width: 25px;
@@ -55,6 +57,47 @@ select {
 Home page
 
 */
+
+
+/*
+Mobile and Tablets 
+
+
+*/
+
+@media only screen and (max-width: 600px) {
+    .home-hero {
+        grid-template-columns: auto !important;
+        justify-content: stretch !important;
+        height: auto !important;
+        align-items: start !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .title {
+        padding:0 !important ;
+        margin: 0 !important;
+    }
+
+    .header-icons-div {
+        position: absolute;
+        top: 30px;
+        right: 0;
+        display: flex !important;
+        flex-direction: column;
+     
+
+        a{
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            margin-bottom: 20px;
+        }
+
+    }
+}
+
 body {
     overflow-x: hidden;
     overflow-y: hidden;
@@ -125,9 +168,6 @@ body {
         grid-column: 1;
         margin: 0 41px;
     }
-
-
-
 }
 
 h1 {
@@ -135,8 +175,7 @@ h1 {
     border: 1px solid white;
     padding: 15px 10px;
     width: 10em;
-
-
+    user-select: none;
 }
 
 .header-icons-div {
@@ -145,6 +184,7 @@ h1 {
     grid-template-columns: repeat(3, 1fr);
     justify-content: end;
     margin-right: 40px;
+    user-select: none;
 
     a {
         text-decoration: none;
