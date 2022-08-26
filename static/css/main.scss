@@ -65,7 +65,8 @@ Mobile and Tablets
 
 */
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
+    
     .home-hero {
         grid-template-columns: auto !important;
         justify-content: stretch !important;
@@ -76,7 +77,7 @@ Mobile and Tablets
     }
 
     .title {
-        padding:0 !important ;
+        padding:0 10px!important ;
         margin: 0 !important;
     }
 
@@ -101,6 +102,7 @@ Mobile and Tablets
 body {
     overflow-x: hidden;
     overflow-y: hidden;
+    transition: all .2s ease-in-out;
 }
 
 .home-body {
