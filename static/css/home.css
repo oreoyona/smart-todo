@@ -1,8 +1,4 @@
 /*
-Home page
-
-*/
-/*
 Mobile and Tablets 
 
 
@@ -33,17 +29,21 @@ Mobile and Tablets
     align-items: flex-end;
     margin-bottom: 20px;
   }
+  .home-body:not(.home-bubble) > * {
+    padding: 0 !important;
+  }
 }
 body {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
   overflow-x: hidden;
   overflow-y: hidden;
   transition: all 0.2s ease-in-out;
 }
 
-.home-body {
-  background-color: black;
-  display: flex;
-  flex-direction: column;
+.home-body:not(.home-bubble) > * {
+  padding: 0 50px;
 }
 
 .home-bubble {
@@ -86,12 +86,10 @@ body {
   align-items: center;
   width: 100%;
   z-index: 2;
-  margin: 40px;
-  padding: 0 20px;
 }
 .home-hero .title {
   grid-column: 1;
-  margin: 0 41px;
+  padding: 0 10px;
 }
 
 h1 {
@@ -131,13 +129,12 @@ main {
 }
 
 .list-all-todos {
-  padding: 10px;
   display: flex;
-  justify-content: flex-start;
 }
 
 article {
-  padding: 0 10px;
+  padding: 0 10px 0 0;
+  margin: 10px;
 }
 
 .main-article-title {
