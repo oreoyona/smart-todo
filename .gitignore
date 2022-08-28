@@ -2,5 +2,7 @@
 *.css.map
 *.sass.map
 *.scss.map
-
+*.pyc/
+__pycache__/
+frontend/
 *.sql
