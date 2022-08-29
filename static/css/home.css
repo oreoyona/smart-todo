@@ -125,7 +125,7 @@ main {
   margin-top: 50px;
   z-index: 3;
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 
 .list-all-todos {
@@ -151,6 +151,12 @@ article {
 .article-bg {
   height: 100%;
   width: 100%;
+}
+
+.main-title {
+  display: flex;
+  justify-self: center;
+  color: white;
 }
 
 /* //animations */
