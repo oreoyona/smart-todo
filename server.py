@@ -1,7 +1,9 @@
 from flask_sqlalchemy import SQLAlchemy
-from flask import Flask, render_template, url_for, request, redirect
+from flask import Flask, render_template, url_for, request, redirect, flash
 from flask_migrate import Migrate
-from models.student import Student, db
+from models.todo import Todo, db
+from forms.new_todo import New_todo
+
 import config
 
 def create_app(env):
@@ -13,8 +15,6 @@ def create_app(env):
 
 server = create_app(config)
 server.app_context().push()
-db.create_all()
-
 
 migrate = Migrate(server, db)
 
@@ -22,38 +22,33 @@ migrate = Migrate(server, db)
     
 @server.route('/')
 def index():
-   return render_template('home.html', liste=[])
+   return render_template('home.html', title='s/todo')
 
-myData = []
-liste = []
-myPsql = Student.query.all()
-@server.route('/lists')
-def show_all():
-    return render_template('index.html', listItem=myPsql)
+
     
-
-
-@server.route('/add', methods=['GET', 'POST']) 
-def add_stud():
-
+@server.route('/todo', methods=['GET', 'POST'])
+def new_todo():
+    form = New_todo()
     if request.method == 'POST':
-        name = request.form['name']
-        post_name = request.form['post_name']
-        graduating = request.form.get('graduating')
-        newUser = Student(id= id, name=name, post_name=post_name, graduating=graduating)
-        db.session.add(newUser)
+        
+        form = New_todo(request.form)
+        todo = Todo(
+            title=form.data['title'],
+            description=form.data['description'],
+            project=form.data['project']
+        )
+        db.session.add(todo)
         db.session.commit()
-        myData.append({'name': name, 'post_name': post_name})
-        
-        
-        
-        return redirect(url_for('show_all'))
+        db.session.close()
+        flash("The new Todo was added")
+            
 
-    else:
-        
-        return render_template('forms.html', liste=liste)
-
-
+    elif request.method == 'GET':
+        return render_template("forms/new_todo.html", form=New_todo(), title='add todo')
+    
+    return render_template("home.html")
+    
+    
 
 if __name__ == '__main__':
    server.run(host="0.0.0.0")

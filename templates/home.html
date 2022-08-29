@@ -1,39 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/home.css">
-    <title>s/todos|Home</title>
-</head>
-
-<body class="home-body">
-    <section class="home-bubble">
-    </section>
-
-    <header class="home-hero">
-        <span class="title">
-            <h1>THE SMART TODO</h1>
-        </span>
-
-        <span class="header-icons-div">
-            <a href="#">
-                <img class="header-icon" src="../static/images/icons8-facebook.svg" alt="facebook share icon">
-            </a>
-            <a href="#" class="header-icon">
-                <img class="header-icon" src="../static/images/icons8-twitter.svg" alt="twitter share icon">
-            </a>
-            <a href="#">
-                <img class="header-icon" src="../static//images/icons8-whatsapp.svg" alt="Whatsapp icon share">
-            </a>
-        </span>
-        <span class="header-icons-div-mobile" style="display: none;"></span>
-    </header>
+{% extends 'layout.html' %}
+{% block content %}
+<section class="home-body">
     <main>
         <section class="main-title">
-            <h2>Your current projects</h2>
+            <h2 class="text-light">Your current projects</h2>
         </section>
         <section class="list-all-todos">
             <article>
@@ -48,7 +18,5 @@
             </article>
         </section>
     </main>
-
-</body>
-
-</html>
+</section>
+{% endblock %}

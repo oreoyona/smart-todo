@@ -7,6 +7,6 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 DEBUG=True
 
-SQLALCHEMY_DATABASE_URI='postgresql://postgres:1234@localhost:5432'
+SQLALCHEMY_DATABASE_URI='postgresql://yxvwznvt:L20buLJs730v865TPQE7LZKEK3_l_YoM@surus.db.elephantsql.com/yxvwznvt'
 
 SQLALCHEMY_TRACK_MODIFICATIONS = False

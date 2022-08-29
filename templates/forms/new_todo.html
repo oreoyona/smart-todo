@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<main style="z-index:3;" >
+    <form method="post">
+        <section class="mb-3">
+            <label for="title" class="form-label text-light">Title</label>
+            {{ form.title(class_='form-control', id_="title", autofocus= true)}}
+           
+        </section>
+          <section class="mb-3">
+            <label for="description" class="form-label text-light">Description</label>
+            {{ form.description(class_='form-control', id_="description", autofocus= true)}}
+          </section>
+          <button type="submit" class="btn btn-primary save-btn">Save</button>
+    </form>
+
+    </main>
+
+{% endblock %}
