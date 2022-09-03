@@ -27,39 +27,43 @@ def index():
 
 
     
-@server.route('/todo', methods=['GET', 'POST'])
+@server.route('/todo')
 def new_todo():
-    form = New_todo()
-    if request.method == 'POST':
-        try:
-        
-            
-            form = New_todo(request.form)
-            todo = Todo(
+    new_todo = New_todo()
+    return render_template("forms/new_todo.html", form=new_todo, title='add todo')
+
+ 
+@server.route('/todo', methods=['POST'])    
+def save_todo():
+    new_todo = New_todo()
+    
+    try:
+        form = New_todo(request.form)
+        todo = Todo(
                 title=form.data['title'],
                 description=form.data['description'],
                 project=form.data['project']
             )
-            db.session.add(todo)
-            db.session.commit()
-            db.session.close()
-            flash("The new Todo was added")
+        db.session.add(todo)
+        db.session.commit()
+        db.session.close()
+        flash("The new Todo was added")
             
-        except:
+    except:
             print(sys.exc_info) 
             flash("Something went wrong")  
             db.sesson.rollback() 
             
-        finally:
+    finally:
             db.session.close()
             
-            
-    elif request.method == 'GET':
-        return render_template("forms/new_todo.html", form=New_todo(), title='add todo')
-    
-    return render_template("home.html")
-    
-    
+    return render_template("forms/new_todo.html", form=new_todo, title='add todo')
+
+
+
+
+
+
 
 if __name__ == '__main__':
    server.run(host="0.0.0.0")
