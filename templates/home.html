@@ -1,5 +1,8 @@
 {% extends 'layout.html' %}
 {% block content %}
+{% for mesg in get_flashed_messages() %}
+
+{% endfor %}
 <section class="home-body">
     <main>
         <section class="main-title">

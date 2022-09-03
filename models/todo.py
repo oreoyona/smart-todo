@@ -1,3 +1,4 @@
+
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 
@@ -6,14 +7,14 @@ db = SQLAlchemy()
 class Todo(db.Model):
     __tablename__ = 'Todo'
     id = db.Column('todo_id', db.Integer, primary_key = True)
-    title = db.Column(db.String(100), nullable=False)
-    description = db.Column(db.String(300), nullable=False)
-    project = db.Column(db.String(100), nullable=False)
+    title = db.Column(db.String(100))
+    description = db.Column(db.String(300))
+    project = db.Column(db.String(100))
     
-    def __init__(self, title, description, project):
-        self.title = title
-        self.description = description
-        self.project = project
+    # def __init__(self, title, description, project):
+    #     self.title = title
+    #     self.description = description
+    #     self.project = project
 
     def __repr__(self):
         return f"id: {self.id} | title: {self.title} | post_name: {self.description} | project: {self.project}"
