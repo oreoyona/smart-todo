@@ -1,3 +1,4 @@
+import sys
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, render_template, url_for, request, redirect, flash
 from flask_migrate import Migrate
@@ -30,19 +31,29 @@ def index():
 def new_todo():
     form = New_todo()
     if request.method == 'POST':
+        try:
         
-        form = New_todo(request.form)
-        todo = Todo(
-            title=form.data['title'],
-            description=form.data['description'],
-            project=form.data['project']
-        )
-        db.session.add(todo)
-        db.session.commit()
-        db.session.close()
-        flash("The new Todo was added")
             
-
+            form = New_todo(request.form)
+            todo = Todo(
+                title=form.data['title'],
+                description=form.data['description'],
+                project=form.data['project']
+            )
+            db.session.add(todo)
+            db.session.commit()
+            db.session.close()
+            flash("The new Todo was added")
+            
+        except:
+            print(sys.exc_info) 
+            flash("Something went wrong")  
+            db.sesson.rollback() 
+            
+        finally:
+            db.session.close()
+            
+            
     elif request.method == 'GET':
         return render_template("forms/new_todo.html", form=New_todo(), title='add todo')
     
